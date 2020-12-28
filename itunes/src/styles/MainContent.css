@@ -1,0 +1,84 @@
+.main-content{
+  background-color: white;
+  margin: 20px;
+  padding: 30px;
+  border-radius: 25px;
+  width: 70%;
+}
+
+.main-content .header{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
+}
+
+.header h1{
+  margin: 0px;
+}
+
+.header form{
+  margin-left: auto;
+}
+
+.input{
+  border-radius: 8px;
+  background-color: #ebebeb;
+  width: 170px;
+  display: flex;
+  flex-direction: row;
+}
+
+input{
+  font-size: 14px;
+  font-weight: 500;
+  color: #797979;
+  width: 127px;
+  padding: 8px 15px;
+  border: 0px;
+  background-color: transparent;
+}
+
+textarea:focus, input:focus{
+  outline: none;
+}
+
+button{
+  color: white;
+  font-size: 18px;
+  background-color: black; /* Green */
+  border: none;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.search-icon{
+  vertical-align: middle;
+}
+
+.song{
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+}
+
+.song img{
+  width: 60px;
+  height: 60px;
+  border: 5px solid #ebebeb;
+  border-radius: 15px;
+  margin-right: 20px;
+  box-shadow: -5px 5px 13px 0.5px rgba(218, 218, 218);
+}
+
+.song-info h1{
+  font-size: 17px;
+  margin: 0px;
+}
+
+.song-info p{
+  font-size: 14px;
+  margin: 0px;
+  font-weight: 600;
+  color: #969696;
+}
