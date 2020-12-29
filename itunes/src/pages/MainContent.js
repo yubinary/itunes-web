@@ -9,7 +9,7 @@ export default function MainContent() {
 
   // make get request to Apple Music API
   function makeUrl() {
-    let url = "https://itunes.apple.com/search?term=" + searchTerm + "&limit=25.";
+    let url = "https://itunes.apple.com/search?term=" + searchTerm + "&limit=6.";
     axios.get(url)
       .then(result => {
         setSongs(result.data.results);
@@ -25,8 +25,6 @@ export default function MainContent() {
     makeUrl();
   }
 
-  console.log(songs)
-
   function displaySong(songs) {
     let result = [];
     if (songs === []) {
@@ -36,7 +34,7 @@ export default function MainContent() {
         </div>
       )
     } else {
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < songs.length; i++) {
         let song = songs[i];
         result.push(
           <div key={i} className="song">
