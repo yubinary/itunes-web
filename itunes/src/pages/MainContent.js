@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import SideBar from "./SideBar.js";
+
 import "../styles/MainContent.css";
 import { BiSearch } from 'react-icons/bi';
-import SideBar from "./SideBar.js";
 
 export default function MainContent({ displayPlayer }) {
   const [songs, setSongs] = useState([]);
   const [songToPlay, setSongToPlay] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
-  const [albums, setAlbums] = useState([]);
 
   // make get request to Apple Music API
   function fetchSong() {
