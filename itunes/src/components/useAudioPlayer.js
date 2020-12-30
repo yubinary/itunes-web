@@ -2,20 +2,21 @@ import { useState, useEffect } from "react";
 
 export default function useAudioPlayer() {
   const [duration, setDuration] = useState();
-  const [curTime, setCurTime] = useState();
-  const [playing, setPlaying] = useState(false);
+  const [currTime, setCurrTime] = useState();
+  const [playing, setPlaying] = useState(true);
   const [clickedTime, setClickedTime] = useState();
 
   useEffect(() => {
     const audio = document.getElementById("audio");
+    console.log(audio)
 
     // state setters wrappers
     const setAudioData = () => {
       setDuration(audio.duration);
-      setCurTime(audio.currentTime);
+      setCurrTime(audio.currentTime);
     }
 
-    const setAudioTime = () => setCurTime(audio.currentTime);
+    const setAudioTime = () => setCurrTime(audio.currentTime);
 
     // DOM listeners: update React state on DOM events
     audio.addEventListener("loadeddata", setAudioData);
@@ -25,7 +26,7 @@ export default function useAudioPlayer() {
     // React state listeners: update DOM on React state changes
     playing ? audio.play() : audio.pause();
 
-    if (clickedTime && clickedTime !== curTime) {
+    if (clickedTime && clickedTime !== currTime) {
       audio.currentTime = clickedTime;
       setClickedTime(null);
     }
@@ -38,7 +39,7 @@ export default function useAudioPlayer() {
   });
 
   return {
-    curTime,
+    currTime,
     duration,
     playing,
     setPlaying,

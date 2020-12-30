@@ -2,10 +2,8 @@ import React from "react";
 import moment from "moment";
 import momentDurationFormatSetup from "moment-duration-format";
 
-export default function Bar(props) {
-  const { duration, curTime, onTimeUpdate } = props;
-
-  const curPercentage = (curTime / duration) * 100;
+export default function Bar({ duration, currTime, onTimeUpdate }) {
+  const curPercentage = (currTime / duration) * 100;
 
   function formatDuration(duration) {
     return moment
@@ -15,7 +13,7 @@ export default function Bar(props) {
 
   function calcClickedTime(e) {
     const clickPositionInPage = e.pageX;
-    const bar = document.querySelector(".bar__progress");
+    const bar = document.querySelector(".bar-progress");
     const barStart = bar.getBoundingClientRect().left + window.scrollX;
     const barWidth = bar.offsetWidth;
     const clickPositionInBar = clickPositionInPage - barStart;
@@ -39,20 +37,20 @@ export default function Bar(props) {
 
   return (
     <div className="bar">
-      <span className="bar__time">{formatDuration(curTime)}</span>
+      <span className="bar-time">{formatDuration(currTime)}</span>
       <div
-        className="bar__progress"
+        className="bar-progress"
         style={{
           background: `linear-gradient(to right, orange ${curPercentage}%, white 0)`
         }}
         onMouseDown={e => handleTimeDrag(e)}
       >
         <span
-          className="bar__progress__knob"
+          className="bar-progress-knob"
           style={{ left: `${curPercentage - 2}%` }}
         />
       </div>
-      <span className="bar__time">{formatDuration(duration)}</span>
+      <span className="bar-time">{formatDuration(duration)}</span>
     </div>
   );
 }

@@ -1,9 +1,29 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans:100,300,400,500,700,900");
+
+* {
+  box-sizing: border-box;
+}
+
+body{
+  height: 100%;
+  background-color: black;
+}
+
+.body{
+  display: flex;
+  flex-direction: row;
+  font-family: "Nunito Sans", sans-serif;
+  background-color: black;
+  justify-content:center;
+}
+
 .main-content{
   background-color: white;
   margin: 20px;
   padding: 30px;
   border-radius: 25px;
-  width: 65%;
+  height: 100%;
+  width: 100%;
 }
 
 .main-content .header{
@@ -42,7 +62,7 @@ textarea:focus, input:focus{
   outline: none;
 }
 
-button{
+.main-content button{
   color: white;
   font-size: 18px;
   background-color: black; /* Green */

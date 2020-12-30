@@ -1,11 +1,9 @@
 import React from "react";
 import { PlayCircleFilled } from "@material-ui/icons";
 
-export default function Play(props) {
-  const { handleClick } = props;
-
+export default function Play({ handleClick }) {
   return (
-    <button className="player__button" onClick={() => handleClick()}>
+    <button className="play-button" onClick={() => handleClick()}>
       <PlayCircleFilled />
     </button>
   );
