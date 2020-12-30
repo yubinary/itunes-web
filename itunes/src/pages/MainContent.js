@@ -5,14 +5,15 @@ import SideBar from "./SideBar.js";
 import "../styles/MainContent.css";
 import { BiSearch } from 'react-icons/bi';
 
-export default function MainContent({ displayPlayer }) {
+export default function MainContent() {
   const [songs, setSongs] = useState([]);
   const [songToPlay, setSongToPlay] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
 
   // make get request to Apple Music API
   function fetchSong() {
-    let url = "https://itunes.apple.com/search?term=" + searchTerm + "&limit=6&entity=song";
+    // entity list: musicArtist, album, song
+    let url = "https://itunes.apple.com/search?term=" + searchTerm + "&limit=10&entity=song";
     axios.get(url)
       .then(result => {
         setSongs(result.data.results);
@@ -21,7 +22,7 @@ export default function MainContent({ displayPlayer }) {
         console.error(error);
       })
   }
-
+  console.log(songs)
   function handleClick(song) {
     setSongToPlay(song)
   }

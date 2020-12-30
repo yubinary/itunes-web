@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { BsPlay, BsPause } from 'react-icons/bs';
+import { BsFillPauseFill, BsFillPlayFill, BsFillSkipStartFill, BsFillSkipEndFill } from 'react-icons/bs';
 import "../styles/SideBar.css";
 
 export default function SideBar({ song }) {
@@ -29,11 +29,11 @@ export default function SideBar({ song }) {
   function displayButton() {
     if (isPlay) {
       return (
-        <button onClick={handleClick}><BsPause /></button>
+        <button className="play" onClick={handleClick}><BsFillPauseFill /></button>
       )
     } else {
       return (
-        <button onClick={handleClick}><BsPlay /></button>
+        <button className="play" onClick={handleClick}><BsFillPlayFill /></button>
       )
     }
   }
@@ -41,12 +41,16 @@ export default function SideBar({ song }) {
   return (
     <div className="side-bar">
       <div className="player">
-        <div className="disk">
-          <img src={song.artworkUrl100} alt={song.trackId} />
-          {displayButton()}
+        <img src={song.artworkUrl100} alt={song.trackId} />
+        <div className="info">
+          <h1>{song.trackCensoredName}</h1>
+          <p>{song.artistName}</p>
         </div>
-        <h1>{song.trackCensoredName}</h1>
-        <p>{song.artistName}</p>
+        <div>
+          <button className="skip"><BsFillSkipStartFill /></button>
+          {displayButton()}
+          <button className="skip"><BsFillSkipEndFill /></button>
+        </div>
       </div>
     </div>
   )

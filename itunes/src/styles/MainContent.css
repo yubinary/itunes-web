@@ -2,29 +2,28 @@
 
 * {
   box-sizing: border-box;
+  color: white;
 }
 
 body{
   height: 100%;
-  background-color: black;
+  background-color: #090d18; 
 }
 
 .body{
   display: flex;
   flex-direction: row;
   font-family: "Nunito Sans", sans-serif;
-  background-color: black;
   justify-content:center;
 }
 
 .main-content{
-  background-color: white;
-  margin: 20px;
-  margin-right: 0px;
-  padding: 30px;
-  border-radius: 25px;
+  background-color: #171e31;
+  padding: 50px;
   height: 100%;
   width: 100%;
+  border-top-right-radius: 50px;
+  /* border-bottom-right-radius: 50px; */
 }
 
 .main-content .header{
@@ -44,7 +43,7 @@ body{
 .input{
   border-radius: 8px;
   background-color: #ebebeb;
-  width: 170px;
+  width: 200px;
   display: flex;
   flex-direction: row;
 }
@@ -53,7 +52,7 @@ input{
   font-size: 14px;
   font-weight: 500;
   color: #797979;
-  width: 127px;
+  width: 155px;
   padding: 8px 15px;
   border: 0px;
   background-color: transparent;
@@ -66,7 +65,7 @@ textarea:focus, input:focus{
 .main-content button{
   color: white;
   font-size: 18px;
-  background-color: black; /* Green */
+  background-color: #171e31;
   border: none;
   padding: 5px 7px;
   border-radius: 5px;
@@ -85,12 +84,12 @@ textarea:focus, input:focus{
 
 .song img{
   object-fit: cover;
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   border: 5px solid #ebebeb;
   border-radius: 15px;
   margin-right: 20px;
-  box-shadow: -5px 5px 13px 0.5px rgba(218, 218, 218);
+  box-shadow: 0px 0px 13px 0.5px rgba(218, 218, 218);
 }
 
 .song-info h1{
@@ -103,4 +102,8 @@ textarea:focus, input:focus{
   margin: 0px;
   font-weight: 600;
   color: #969696;
+}
+
+button:focus {
+  outline:0;
 }
