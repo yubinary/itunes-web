@@ -6,22 +6,25 @@ import "../styles/SideBar.css";
 export default function SideBar({ song }) {
   const [isPlay, setIsPlay] = useState(false);
   const [audio, setAudio] = useState(new Audio());
+  const [rotate, setRotate] = useState(1);
 
   useEffect(() => {
     audio.src = song.previewUrl;
     setAudio(audio);
     setIsPlay(true);
     audio.play();
-  }, [song])
+  }, [song, audio])
 
   // change state: pause music when playing, play music when paused
   function handleClick() {
     if (!isPlay) {
       audio.play();
       setIsPlay(true);
+      setRotate(1);
     } else {
       audio.pause();
       setIsPlay(false);
+      setRotate(0);
     }
   }
 
@@ -41,7 +44,7 @@ export default function SideBar({ song }) {
   return (
     <div className="side-bar">
       <div className="player">
-        <img src={song.artworkUrl100} alt={song.trackId} />
+        <img src={song.artworkUrl100} alt={song.trackId} rotate={rotate} />
         <div className="info">
           <h1>{song.trackCensoredName}</h1>
           <p>{song.artistName}</p>

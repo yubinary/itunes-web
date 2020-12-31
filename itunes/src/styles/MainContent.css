@@ -20,26 +20,26 @@ button:focus {
   display: flex;
   flex-direction: row;
   font-family: "Nunito Sans", sans-serif;
-  justify-content:center;
 }
 
 .main-content{
   background-color: #171e31;
-  padding: 50px;
+  padding: 30px;
   height: 100%;
   width: 100%;
   border-top-right-radius: 50px;
 }
 
+/* header */
 .main-content .header{
   display: flex;
   flex-direction: row;
-  margin-bottom: 30px;
+  margin: 20px;
 }
 
-/* header */
-.header h1{
-  margin: 0px;
+.header .github{
+  margin: auto 0px;
+  font-size: 30px;
 }
 
 .header form{
@@ -49,16 +49,15 @@ button:focus {
 .input{
   border-radius: 8px;
   background-color: #ebebeb;
-  width: 200px;
+  width: 290px;
   display: flex;
   flex-direction: row;
 }
 
 input{
   font-size: 14px;
-  font-weight: 500;
   color: #797979;
-  width: 155px;
+  width: 260px;
   padding: 8px 15px;
   border: 0px;
   background-color: transparent;
@@ -82,21 +81,72 @@ textarea:focus, input:focus{
   vertical-align: middle;
 }
 
+h2{
+  margin: 30px 20px 10px 20px;
+}
+
+/* album */
+.album-list{
+  display: flex;
+}
+
+.album{
+  padding: 20px;
+  text-align: center;
+  border-radius: 25px;
+  margin-right: auto;
+  transition: 0.3s ease-in-out;
+}
+
+.album:hover, .song:hover{
+  background-color: #2b3246;
+}
+
+.album img, .song img{
+  object-fit: cover;
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0.1px rgba(218, 218, 218);
+  margin-bottom: 5px;
+}
+
+.album-info{
+  text-align: left;
+}
+
+.album-info h1, .song-info h1{
+  font-size: 13px;
+  margin: 0px;
+}
+
+.album-info p, .song-info p{
+  font-size: 12px;
+  margin: 0px;
+  font-weight: 600;
+  color: #969696;
+}
+
 /* song */
+.row{
+  display: flex;
+  flex-direction: row;
+}
+
 .song{
   display: flex;
   flex-direction: row;
-  margin: 20px 0px;
+  padding: 20px;
+  margin-right: auto;
+  border-radius: 25px;
+  transition: 0.3s ease-in-out;
 }
 
 .song img{
-  object-fit: cover;
   width: 60px;
   height: 60px;
-  /* border: 5px solid #ebebeb; */
-  border-radius: 30px;
+  border-radius: 15px;
   margin-right: 20px;
-  box-shadow: 0px 0px 13px 0.1px rgba(218, 218, 218);
 }
 
 .song-info{
@@ -106,14 +156,13 @@ textarea:focus, input:focus{
 
 .song-info h1{
   font-size: 17px;
-  margin: 0px;
-
 }
 
 .song-info p{
   font-size: 14px;
-  margin: 0px;
-  font-weight: 600;
-  color: #969696;
 }
 
+.song-control{
+  vertical-align: middle;
+  margin: auto 0px;
+}
