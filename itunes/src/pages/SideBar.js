@@ -14,6 +14,7 @@ export default function SideBar({ song }) {
     audio.play();
   }, [song])
 
+  // change state: pause music when playing, play music when paused
   function handleClick() {
     if (!isPlay) {
       audio.play();
@@ -24,8 +25,7 @@ export default function SideBar({ song }) {
     }
   }
 
-  console.log(isPlay)
-
+  // show pause button when playing, play button when paused
   function displayButton() {
     if (isPlay) {
       return (

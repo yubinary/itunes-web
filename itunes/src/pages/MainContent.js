@@ -22,17 +22,29 @@ export default function MainContent() {
         console.error(error);
       })
   }
-  console.log(songs)
+
+  // pass song prop when song clicked
   function handleClick(song) {
     setSongToPlay(song)
   }
 
+  // fetch search term to when button clicked
   function handleSubmit(event) {
     // prevent default action of form (ex. refresh the page)
     event.preventDefault();
     fetchSong();
   }
 
+  function cropParagraph(p) {
+    let crop = "";
+    if (p.length > 30) {
+      crop = p.substring(0, 31) + "..."
+    } else {
+      crop = p;
+    } return crop;
+  }
+
+  // display songs
   function displaySong(songs) {
     let result = [];
     if (songs === []) {
@@ -48,7 +60,7 @@ export default function MainContent() {
           <div key={i} className="song" onClick={() => handleClick(song)}>
             <img src={song.artworkUrl100} alt={song.artworkUrl100} />
             <div className="song-info">
-              <h1>{song.trackCensoredName}</h1>
+              <h1>{cropParagraph(song.trackCensoredName)}</h1>
               <p>{song.artistName}</p>
             </div>
           </div >
@@ -72,10 +84,12 @@ export default function MainContent() {
               value={searchTerm}
               onChange={(event) => setSearchTerm(event.target.value)}
             />
-            <button type="submit"><BiSearch className="search-icon" /></button>
+            <button className="find" type="submit"><BiSearch className="search-icon" /></button>
           </form>
         </div>
-        {displaySong(songs)}
+        <div className="results">
+          {displaySong(songs)}
+        </div>
       </div>
       <SideBar song={songToPlay} />
     </div>
