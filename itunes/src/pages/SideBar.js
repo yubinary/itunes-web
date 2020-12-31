@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { BsFillPauseFill, BsFillPlayFill, BsFillSkipStartFill, BsFillSkipEndFill } from 'react-icons/bs';
 import "../styles/SideBar.css";
 
-export default function SideBar({ song }) {
+export default function SideBar({ song, playlist }) {
   const [isPlay, setIsPlay] = useState(false);
   const [audio, setAudio] = useState(new Audio());
   const [rotate, setRotate] = useState(1);
@@ -41,6 +41,20 @@ export default function SideBar({ song }) {
     }
   }
 
+  // display playlist
+  function displayPlaylist(playlists) {
+    let result = [];
+    for (let i = 0; i < playlists.length; i++) {
+      let playlist = playlists[i];
+      result.push(
+        <div>
+          <p>{playlist.trackCensoredName}</p>
+        </div>
+      )
+    } return result;
+  }
+
+
   return (
     <div className="side-bar">
       <div className="player">
@@ -55,6 +69,7 @@ export default function SideBar({ song }) {
           <button className="skip"><BsFillSkipEndFill /></button>
         </div>
       </div>
+      {displayPlaylist(playlist)}
     </div>
   )
 }

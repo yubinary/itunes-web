@@ -5,13 +5,14 @@ import SideBar from "./SideBar.js";
 import "../styles/MainContent.css";
 import { BiSearch } from 'react-icons/bi';
 import { FiGithub } from 'react-icons/fi';
-import { BsPlus } from 'react-icons/bs';
+import { BsPlus, BsPlayFill } from 'react-icons/bs';
 
 export default function MainContent() {
   const [songs, setSongs] = useState([]);
   const [albums, setAlbums] = useState([]);
   const [songToPlay, setSongToPlay] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
+  const [playlist, setPlaylist] = useState([]);
 
   // make get song request to Apple Music API
   function fetchEntity(entity, limit, setFunction) {
@@ -30,6 +31,12 @@ export default function MainContent() {
   function handleClick(song) {
     setSongToPlay(song)
   }
+
+  // add clicked song to the playlist
+  function handleAdd(song) {
+    setPlaylist([...playlist, song]);
+  }
+  console.log(playlist);
 
   // fetch search term to when button clicked
   function handleSubmit(event) {
@@ -76,13 +83,13 @@ export default function MainContent() {
               <div className="song-info">
                 <h1>{cropParagraph(songl.trackCensoredName, 30)}</h1>
                 <p>{songl.artistName}</p>
-                <button><BsPlus /></button>
               </div>
               <div className="song-control">
                 <p>{convertToMin(songl.trackTimeMillis)}</p>
+                <BsPlus className="plus" onClick={() => handleAdd(songl)} />
               </div>
             </div >
-            <div key={i + 1} className="song" onClick={() => handleClick(songl)}>
+            <div key={i + 1} className="song" onClick={() => handleClick(songr)}>
               <img src={songr.artworkUrl100} alt={songr.artworkUrl100} />
               <div className="song-info">
                 <h1>{cropParagraph(songr.trackCensoredName, 30)}</h1>
@@ -90,7 +97,7 @@ export default function MainContent() {
               </div>
               <div className="song-control">
                 <p>{convertToMin(songr.trackTimeMillis)}</p>
-                <button><BsPlus /></button>
+                <BsPlus className="plus" onClick={() => handleAdd(songr)} />
               </div>
             </div >
           </div>
@@ -142,7 +149,7 @@ export default function MainContent() {
             onSubmit={handleSubmit}>
             <input
               type="text"
-              placeholder="Search for songs, artists etc..."
+              placeholder="Search"
               value={searchTerm}
               onChange={(event) => setSearchTerm(event.target.value)}
             />
@@ -158,7 +165,7 @@ export default function MainContent() {
           {displaySong(songs)}
         </div>
       </div>
-      <SideBar song={songToPlay} />
+      <SideBar song={songToPlay} playlist={playlist} />
     </div>
   )
 } 
