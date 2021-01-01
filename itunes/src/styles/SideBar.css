@@ -59,14 +59,25 @@
   border-radius: 10px;
 }
 
-.next-song h1{
-  font-size: 13px;
+.next-song .info{
   margin: auto 20px;
   margin-right: auto;
+  padding: 13px 0px;
 }
 
 .next-song p{
   font-size: 13px;
+  margin: auto 0px;
+}
+
+.info h1{
+  font-size: 13px;
+  margin: 0px;
+}
+
+.info p{
+  font-size: 9px;
+  margin: 0px;
 }
 
 .minus{

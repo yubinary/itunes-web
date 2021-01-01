@@ -19,7 +19,10 @@ export default function Playlist({ playlist, setPlaylist, cropParagraph }) {
       result.push(
         <div className="next-song">
           <p>{i}</p>
-          <h1>{cropParagraph(playlist.trackCensoredName, 20)}</h1>
+          <div className="info">
+            <h1>{cropParagraph(playlist.trackCensoredName, 20)}</h1>
+            <p>{cropParagraph(playlist.artistName, 40)}</p>
+          </div>
           <BiMinus className="minus" onClick={() => handleRemove(i)} />
         </div>
       )
@@ -28,6 +31,7 @@ export default function Playlist({ playlist, setPlaylist, cropParagraph }) {
 
   return (
     <div>
+      <h3>Up Next</h3>
       {displayPlaylist(playlist)}
     </div>
   )
