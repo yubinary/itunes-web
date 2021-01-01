@@ -1,8 +1,10 @@
+/* side bar */
 .side-bar{
   width: 400px;
-  padding: 50px;
+  padding: 50px 35px;
 }
 
+/* player */
 .player{
   text-align: center;
 }
@@ -26,24 +28,10 @@
   border-radius: 100px;
   box-shadow: 0px 0px 13px 0.5px rgba(218, 218, 218);
 }
-/* 
-.player img[rotate="1"]{
-  animation: rotation 30s infinite ease;
-}
 
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
-} */
-
-.player button {
+.player button{
   background-color: transparent;
   border: none;
-  color: black;
   vertical-align: middle;
 }
 
@@ -56,7 +44,33 @@
   font-size: 25px;
 }
 
-.info{
+.player-info{
   color: black;
   margin: 20px 0px;
+}
+
+/* playlist */
+.next-song{
+  display: flex;
+  flex-direction: row;
+  background-color: #1d212c;
+  margin: 15px 0px;
+  padding: 0px 15px;
+  border-radius: 10px;
+}
+
+.next-song h1{
+  font-size: 13px;
+  margin: auto 20px;
+  margin-right: auto;
+}
+
+.next-song p{
+  font-size: 13px;
+}
+
+.minus{
+  font-size: 25px;
+  padding: 5px;
+  margin: auto 0px;
 }

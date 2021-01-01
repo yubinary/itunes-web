@@ -1,13 +1,18 @@
 import React from 'react';
-import { BsPlus, BsPlayFill } from 'react-icons/bs';
+import { BsPlus } from 'react-icons/bs';
 
 export default function Song({ songs, cropParagraph, handleClick, playlist, setPlaylist }) {
 
   // helper function that converts milliseconds to minutes
   function convertToMin(ms) {
-    let min = Math.floor(ms / 60000);
-    let sec = (ms % 60000) + "";
-    return min + ":" + sec.substring(0, 2);
+    let min = Math.floor(ms / 60000) + "";
+    if (min.length > 1) {
+      return min + "";
+    }
+    else {
+      let sec = (ms % 60000) + "";
+      return min + ":" + sec.substring(0, 2);
+    }
   }
 
   // add clicked song to the playlist
@@ -20,7 +25,7 @@ export default function Song({ songs, cropParagraph, handleClick, playlist, setP
   function displaySong(songs) {
     let result = [];
     if (songs.length === 0) {
-      result.push(
+      return (
         <div className="song">
           <p>no result</p>
         </div>
@@ -30,8 +35,8 @@ export default function Song({ songs, cropParagraph, handleClick, playlist, setP
         let songl = songs[i];
         let songr = songs[i + 1];
         result.push(
-          <div className="row">
-            <div key={i} className="song" onClick={() => handleClick(songl)}>
+          <div key={songl.trackId} className="row">
+            <div className="song" onClick={() => handleClick(songl)}>
               <img src={songl.artworkUrl100} alt={songl.artworkUrl100} />
               <div className="song-info">
                 <h1>{cropParagraph(songl.trackCensoredName, 30)}</h1>
@@ -42,7 +47,7 @@ export default function Song({ songs, cropParagraph, handleClick, playlist, setP
                 <BsPlus className="plus" onClick={(event) => handleAdd(event, songl)} />
               </div>
             </div >
-            <div key={i + 1} className="song" onClick={() => handleClick(songr)}>
+            <div className="song" onClick={() => handleClick(songr)}>
               <img src={songr.artworkUrl100} alt={songr.artworkUrl100} />
               <div className="song-info">
                 <h1>{cropParagraph(songr.trackCensoredName, 30)}</h1>

@@ -6,7 +6,7 @@ export default function Album({ albums, cropParagraph, handleClick }) {
   function displayAlbum(albums) {
     let result = [];
     if (albums.length === 0) {
-      result.push(
+      return (
         <div className="album">
           <p>no result</p>
         </div>
@@ -20,7 +20,7 @@ export default function Album({ albums, cropParagraph, handleClick }) {
         } else {
           names.push(album.collectionCensoredName);
           result.push(
-            <div key={i} className="album" onClick={() => handleClick(album)}>
+            <div key={album.collectionId} className="album" onClick={() => handleClick(album)}>
               <img src={album.artworkUrl100} alt={album.artworkUrl100} />
               <div className="album-info">
                 <h1>{cropParagraph(album.collectionCensoredName, 18)}</h1>

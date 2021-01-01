@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import Playlist from "../components/Playlist.js";
 
 import { BsFillPauseFill, BsFillPlayFill, BsFillSkipStartFill, BsFillSkipEndFill } from 'react-icons/bs';
 import "../styles/SideBar.css";
 
-export default function SideBar({ song, playlist }) {
+export default function SideBar({ song, playlist, setPlaylist, cropParagraph }) {
   const [isPlay, setIsPlay] = useState(false);
   const [audio, setAudio] = useState(new Audio());
   const [rotate, setRotate] = useState(1);
@@ -41,35 +42,29 @@ export default function SideBar({ song, playlist }) {
     }
   }
 
-  // display playlist
-  function displayPlaylist(playlists) {
-    let result = [];
-    for (let i = 0; i < playlists.length; i++) {
-      let playlist = playlists[i];
-      result.push(
-        <div>
-          <p>{playlist.trackCensoredName}</p>
-        </div>
-      )
-    } return result;
-  }
-
-
   return (
     <div className="side-bar">
       <div className="player">
         <img src={song.artworkUrl100} alt={song.trackId} rotate={rotate} />
-        <div className="info">
+        <div className="player-info">
           <h1>{song.trackCensoredName}</h1>
           <p>{song.artistName}</p>
         </div>
         <div>
-          <button className="skip"><BsFillSkipStartFill /></button>
+          <button className="skip">
+            <BsFillSkipStartFill />
+          </button>
           {displayButton()}
-          <button className="skip"><BsFillSkipEndFill /></button>
+          <button className="skip">
+            <BsFillSkipEndFill />
+          </button>
         </div>
       </div>
-      {displayPlaylist(playlist)}
+      <Playlist
+        playlist={playlist}
+        setPlaylist={setPlaylist}
+        cropParagraph={cropParagraph}
+      />
     </div>
   )
 }

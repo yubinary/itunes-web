@@ -13,7 +13,8 @@ export default function MainContent() {
   const [albums, setAlbums] = useState([]);
   const [songToPlay, setSongToPlay] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
-  const [playlist, setPlaylist] = useState([]);
+  // first object is the song playing
+  const [playlist, setPlaylist] = useState([{}]);
 
   // make get song request to Apple Music API
   function fetchEntity(entity, limit, setFunction) {
@@ -37,7 +38,7 @@ export default function MainContent() {
   function handleSubmit(event) {
     // prevent default action of form (ex. refresh the page)
     event.preventDefault();
-    fetchEntity("song", 20, setSongs);
+    fetchEntity("song", 10, setSongs);
     fetchEntity("album", 40, setAlbums);
   }
 
@@ -87,6 +88,8 @@ export default function MainContent() {
       <SideBar
         song={songToPlay}
         playlist={playlist}
+        setPlaylist={setPlaylist}
+        cropParagraph={cropParagraph}
       />
     </div>
   )
