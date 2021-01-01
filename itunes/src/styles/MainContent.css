@@ -82,7 +82,7 @@ textarea:focus, input:focus{
 }
 
 h2{
-  margin: 30px 20px 10px 20px;
+  margin: 35px 20px 10px 20px;
 }
 
 /* album */
@@ -150,7 +150,7 @@ h2{
 
 .song-info{
   margin-top: 10px;
-  width: 275px;
+  width: 340px;
 }
 
 .song-info h1{
@@ -168,7 +168,8 @@ h2{
 }
 
 .song-control .plus{
-  font-size: 25px;
+  font-size: 35px;
   margin: auto 0px;
-  margin-left: 10px;
+  margin-left: 20px;
+  padding: 5px;
 }
