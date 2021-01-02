@@ -17,9 +17,14 @@ export default function MainContent() {
   const [playlist, setPlaylist] = useState([{}]);
 
   // make get song request to Apple Music API
-  function fetchEntity(entity, limit, setFunction) {
+  function fetchEntity(entity, limit, setFunction, isSong) {
     // entity list: musicArtist, album, song
-    let url = "https://itunes.apple.com/search?term=" + searchTerm + "&limit=" + limit + "&entity" + entity;
+    let searchParam = "search?term=" + searchTerm;
+    let limitParam = "&limit=" + limit;
+    let entityParam = "&entity=" + entity;
+    let url = "https://itunes.apple.com/" + searchParam + limitParam + entityParam;
+    url = isSong ? url + "&kind=song" : url;
+
     axios.get(url)
       .then(result => {
         setFunction(result.data.results);
@@ -38,8 +43,8 @@ export default function MainContent() {
   function handleSubmit(event) {
     // prevent default action of form (ex. refresh the page)
     event.preventDefault();
-    fetchEntity("song", 10, setSongs);
-    fetchEntity("album", 40, setAlbums);
+    fetchEntity("song", 10, setSongs, true);
+    fetchEntity("album", 40, setAlbums, false);
   }
 
   // helper function that crops paragraph by given length

@@ -16,7 +16,7 @@ export default function Album({ albums, cropParagraph, handleClick }) {
       let names = [];
       for (let i = 0; i < albums.length; i++) {
         let album = albums[i];
-        if (names.includes(album.collectionCensoredName) || album.kind === "music-video") {
+        if (names.includes(album.collectionCensoredName) || album.collectionType !== "Album") {
           continue;
         } else {
           names.push(album.collectionCensoredName);
@@ -43,6 +43,8 @@ export default function Album({ albums, cropParagraph, handleClick }) {
     }
     return result;
   }
+
+  console.log(albums)
 
   return (
     <div>

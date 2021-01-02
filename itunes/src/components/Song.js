@@ -40,7 +40,7 @@ export default function Song({ songs, cropParagraph, handleClick, playlist, setP
               <img src={songl.artworkUrl100} alt={songl.artworkUrl100} />
               <div className="song-info">
                 <h1>{cropParagraph(songl.trackCensoredName, 30)}</h1>
-                <p>{songl.artistName}</p>
+                <p>{cropParagraph(songl.artistName, 30)}</p>
               </div>
               <div className="song-control">
                 <p>{convertToMin(songl.trackTimeMillis)}</p>
@@ -51,7 +51,7 @@ export default function Song({ songs, cropParagraph, handleClick, playlist, setP
               <img src={songr.artworkUrl100} alt={songr.artworkUrl100} />
               <div className="song-info">
                 <h1>{cropParagraph(songr.trackCensoredName, 30)}</h1>
-                <p>{songr.artistName}</p>
+                <p>{cropParagraph(songr.artistName, 30)}</p>
               </div>
               <div className="song-control">
                 <p>{convertToMin(songr.trackTimeMillis)}</p>
@@ -64,7 +64,6 @@ export default function Song({ songs, cropParagraph, handleClick, playlist, setP
     }
     return result;
   }
-
 
   return (
     <div>
