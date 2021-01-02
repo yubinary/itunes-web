@@ -31,7 +31,7 @@ export default function Playlist({ playlist, setPlaylist, cropParagraph }) {
 
   return (
     <div>
-      <h3>Up Next</h3>
+      <h4>Up Next</h4>
       {displayPlaylist(playlist)}
     </div>
   )

@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaPlayCircle } from 'react-icons/fa';
 
 export default function Album({ albums, cropParagraph, handleClick }) {
 
@@ -20,10 +21,18 @@ export default function Album({ albums, cropParagraph, handleClick }) {
         } else {
           names.push(album.collectionCensoredName);
           result.push(
-            <div key={album.collectionId} className="album" onClick={() => handleClick(album)}>
-              <img src={album.artworkUrl100} alt={album.artworkUrl100} />
+            <div key={album.collectionId} className="album" >
+              <div className="album-thumbnail">
+                <img src={album.artworkUrl100} alt={album.artworkUrl100} />
+                <div className="album-layer">
+                  <FaPlayCircle
+                    className="album-play-button"
+                    onClick={() => handleClick(album)}
+                  />
+                </div>
+              </div>
               <div className="album-info">
-                <h1>{cropParagraph(album.collectionCensoredName, 18)}</h1>
+                <h1>{cropParagraph(album.collectionCensoredName, 15)}</h1>
                 <p>{cropParagraph(album.artistName, 20)}</p>
               </div>
             </div >
